@@ -28,10 +28,21 @@ public class App {
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
         for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
+            //cor magenta de fundo
+            System.out.print("\u001b[45m"); 
+            System.out.print(filme.get("title"));
+            //cor preta de fundo
+            System.out.println("\u001b[40m");
             System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
-            System.out.println();            
+            String imdbRating = filme.get("imDbRating");
+            double rating = Double.valueOf(imdbRating);
+            System.out.print(imdbRating);
+            
+            // para visualizar caracteres UTF-8 no terminal executar comando "chcp 65001"
+            for(int x = 0; x < rating; x++){
+                System.out.print("\u2b50");
+            }         
+            System.out.println();
         }
 
     }
